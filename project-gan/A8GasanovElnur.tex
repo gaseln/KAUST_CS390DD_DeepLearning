@@ -27,7 +27,7 @@
 \section{Solution}
 
 \begin{enumerate}[label=(\alph*)]
-	\item ---
+	\item It consists of two loss terms. First one is $KL(\mu(X), \Sigma(X) || \mathcal{N}(0, 1))$ , it tries to make distribution of latent variable $z$ close to normal distribution from which in future one plans to sample new latent variables. Second loss term is $\|X - f(z)\|^2$ which actually tries to make a generated image close to existing one. 
 	\item PointNet can tackle classification, part segmentation and semantic segmentation problems.
 	\item "symmetric function takes $n$ vectors as input and outputs a new vector that is invariant to the input order"; the usage of symmetric functions is motivated with the fact that output of the network must be invariant to input permutation.
 	\item This part of the network takes raw input, applies multilayer perceptron and max pooling across all points and passes the data through two fully connected layers. Authors claim that this facilitates to aligning all input to a canonical space before feature extraction.
