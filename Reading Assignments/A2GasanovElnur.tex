@@ -1,0 +1,70 @@
+\documentclass{article}
+\usepackage{amssymb, amsmath, amsthm}
+\usepackage{enumitem}
+
+\title{Assignment 2: DenseNet BatchNorm CourseNotes}
+\author{Elnur Gasanov}
+\date{}
+
+\begin{document}
+\maketitle
+\section{The convolutional layer architecture}
+
+{\bfseries Task.} 
+\begin{enumerate}
+	\item Read the CS231n course notes about CNNs to review the lecture material http://cs231n.github.io/convolutional-networks/
+	\item Answer the following questions: 
+	\begin{enumerate}
+		\item How many parameters do you need to go from an input image of size 55 x 55 x 3 to a next layer of size 55 x 55 x 32, using convolutions filters with a filter size of 5?
+		\item How many convolution filters are needed? What is the size of each filter?
+		\item What is the total number of weights(parameters) required to specify one filter?
+		\item What is the total number of weights required to specify all the required filters?
+		\item How does the stride parameter influence the number of weights in the network?
+		\item Does a convolutional filter require less or more or the same number of weights if stride increases?
+		\item How about dilation? How does dilation influence the number of weights?
+	\end{enumerate}
+\end{enumerate}
+{\bfseries Answers:}
+\begin{enumerate}[label=(\alph*)]
+	\item A kernel needs $5 \times 5 \times 3 + 1 = 76$ parameters to convolve an input image with 3 channels to a one-channel image. It means one needs $76 \times 32 = 2432$ parameters to get a 32-channel output.
+	\item 32 filters are needed, each of size $5 \times 5 \times 3$.
+	\item As was mentioned above, 76 parameters.
+	\item Answer to this question is the same as to question (a).
+	\item There is no connection between stride and the number of weights.
+	\item It requires the same number of weights.
+	\item Dilation adds spaces between cells, but does not change the number of parameters.
+\end{enumerate}
+
+\section{DenseNet}
+
+{\bfseries Task.} 
+\begin{enumerate}
+	\item Read the DenseNet paper: https://arxiv.org/pdf/1608.06993.pdf	\item Answer the following questions: 
+	\begin{enumerate}
+		\item What is the main idea of the DenseNet architecture?
+		\item How is dropout used in the DenseNet architecture?
+	\end{enumerate}
+\end{enumerate}
+{\bfseries Answers:}
+\begin{enumerate}[label=(\alph*)]
+	\item "The $l$-th layer has $l$ inputs, consisting of feature-maps of all preceding convolutional blocks. Its own feature-maps are passed on to all $L-l$ subsequent layers"
+	\item A dropout layer is added after each convolutional layer (except the first one) and the dropout rate is set to 0.2.
+\end{enumerate}
+
+\section{Batch Normalization}
+\begin{enumerate}
+	\item Read the Batch Normalization paper:https://arxiv.org/pdf/1502.03167.pdf
+	\item Answer the following questions: 
+	\begin{enumerate}
+		\item What is the main idea of the batch normalization paper?
+		\item How big should the batch sizes be for batch normalization to work?
+		\item Does it work for a batch size of 1?
+	\end{enumerate}
+\end{enumerate}
+{\bfseries Answers:}
+\begin{enumerate}[label=(\alph*)]
+	\item It is well-known that whitening of the input data improves the performance of a model. Applying the same process to internal layers also can improve the performance: calculations get more stable, internal covariance shift gets reduced, gradients do not vanish to zero. 
+	\item The larger batch size is, the closer population means and deviations to the ones of the whole dataset are and the faster the algorithm converges to these values.
+	\item Yes, it does.
+\end{enumerate}
+\end{document}

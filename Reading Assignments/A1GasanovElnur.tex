@@ -1,0 +1,62 @@
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage{lmodern}
+\usepackage{amssymb, amsmath, amsthm}
+
+\title{Assignment 1: Start reading}
+\author{Elnur Gasanov}
+\date{}
+\parindent=0.0mm
+
+\begin{document}
+\maketitle
+
+\section{AlexNet}
+
+{\bfseries Task.} Read the paper "ImageNet Classification with Deep Convolutional Neural Networks ",  Alex Krizhevsky et al. What are the main ideas that lead to the success of the proposed system? Describe each idea in a short paragraph.
+
+{\bfseries Main ideas.} 
+\begin{enumerate}
+	\item ReLU activation function facilitates faster training process since diminishing gradient problem has got less impact on training process.
+	\item GPU helps to make calculations faster.
+	\item Local Response Normalization aids generalization.
+	\item MaxPooling Layer reduces dimensionality of problem while preserving main features.
+	\item Dropout reduces overfitting.
+\end{enumerate}
+
+\section{Reviewing conference papers}
+{\bfseries Task.} Look at recent conference proceedings: CVPR 2019 or ICLR 2019. Read the abstract of 10 papers you find interesting / read part of the introduction, look at the figures, and look through the results. Don't read the complete paper, just get the main idea. Write down the list of 10 papers and give one line comment what seems to be most interesting in the paper.
+
+{\bfseries A short review of 10 papers.}
+\begin{enumerate}
+	\item <<Learning a Deep ConvNet for Multi-label Classification with Partial Labels>> T.Durand et al. Authors consider the problem of multi-label classification (determining all classes of objects presented on a single picture) when images are labeled only partially (some classes in a label may miss). They claim to be pioneers in this area, design new loss function for the problem.
+ 	\item In <<2.5D Visual Sound>> by R.Gao and K.Grauman deep learning network is designed to generate binaural audio out of monoaural one and video frames.
+	\item <<Arbitrary Style Transfer with Style-Attentional Networks>> D.Y.Park and K.H.Lee. Style transfer problem is solved using novel identity loss function which <<helps to maintain the content structure without losing the richness of the style>> along with multi-level feature embeddings.
+	\item <<Typography with Decor: Intelligent Text Style Transfer>> W.Wang et al. Style transfer can also be applied to typography: given a letter in a new font one needs to create all letters in the same font. A novel structure-aware strategy is claimed to differ this work from others.
+	\item <<The Domain Transform Solver" A.Bapat and J.-M. Frahm. A novel framework for edge-aware optimization is <<an order of magnitude>> faster than the state-of-the-art. 
+	\item <<A Decomposition Algorithm for the Sparse Generalized Eigenvalue Problem>> G.Yuan et al. New algorithm solving the sparse generalized eigenvalue problem outperforms existing solutions in terms of accuracy.
+	\item <<Accelerating CNNs via Activation Map Compression>> by Georgios Georgiadis. Research is conducted in the area of accelerating computations. The author uses sparsification, quantization and entropy coding to both increase the <<representational power>> of activation maps and to quicken the calculations. 
+	\item <<A Flexible Convolutional Solver for Fast Style Transfers>> G.Puy and P.P{\'e}rez. Changes can be applied to the process of style transfer during the training process without retraining.
+	\item <<Emotion-Aware Human Attention Prediction>> M.O.Cordel II et al. Authors introduce an improved evaluation metric for measuring human attention.
+	\item <<Parallel Optimal Transport GAN>> Gil Avraham et al. To improve the performance of GANs one can play with underlying distributions. 
+	\end{enumerate}
+
+\section{Pytorch}
+{\bfseries Task.} Create a working Deep Learning Environment, go through the proposed tutorial, and look at the project description.
+Write down a list of 10 PyTorch commands you think will be beneficial for tackling project an image classification problem and give a one sentence explanation of what the commands are useful for.
+
+{\bfseries List of useful commands.}
+\begin{enumerate}
+	\item torchvision.transforms is a useful package for augmenting initial dataset.
+	\item datasets.ImageFolder can be used for downloading the dataset.
+	\item torch.utils.data.DataLoader is good for getting batches. 
+	\item torch.nn.Conv2d creates a convolutional layer with specified parameters.
+	\item torch.nn.ConvTranspose2d creates a 2D transposed convolutional layer.
+	\item torch.nn.Linear creates a fully connected layer.
+	\item view returns the same tensor in a different shape.
+	\item torch.nn.BatchNorm2d creates a batch normalization layer.
+	\item torch.cuda.is\_available() checks availability of GPUs.
+	\item torch.mean() calculates a mean value of the given tensor.
+	\item torch.optim.Adam creates an Adam optimizer.
+\end{enumerate}
+\end{document}

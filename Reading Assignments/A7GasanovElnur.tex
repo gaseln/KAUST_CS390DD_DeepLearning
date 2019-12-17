@@ -1,0 +1,56 @@
+\documentclass{article}
+\usepackage{amssymb, amsmath, amsthm}
+\usepackage{graphicx}
+
+\author{Elnur Gasanov}
+\title{Assignment 7 : Visualization and GANs}
+
+\date{}
+
+\begin{document}
+\maketitle
+
+\section{Task}
+
+\begin{enumerate}
+	\item Read the paper: https://distill.pub/2017/feature-visualization "Feature Visualization"
+	\item Read the paper: https://distill.pub/2018/building-blocks "The Building Blocks of Interpretability"
+	\item Answer the following questions: 
+		\begin{enumerate}
+			\item Describe the problem of gradient backpropagation in relation to checkerboard patterns
+			\item Summarize 3 good ideas from the paper "The Building Blocks of Interpretability"
+		\end{enumerate}
+	\item Read the paper: https://arxiv.org/abs/1812.04948 "A Style-Based Generator Architecture for Generative Adversarial Networks"
+	\item Answer the following questions:
+		\begin{enumerate}
+			\item What normalization is used in the networks?
+			\item What are the things changing in the image/face if $w$ is changed in the earlier layers?
+			\item What are the things changing in the image/face if $w$ is changed in the middle layers?
+			\item What are the things changing in the image/face if $w$ is changed in the later layers?
+			\item What is the advantage of the $w$-space over the $z$-space?
+		\end{enumerate}
+\end{enumerate}
+
+\section{Solution}
+
+\begin{enumerate}
+	\item Answers to the questions related to the first two papers: 
+		\begin{enumerate}
+			\item When backpropogating a gradient through a MaxPool layer, a value is trasferred only to one cell out of $n \times n$, where $n$ is the size of a MaxPool kernel. In the same fashion, when backpropogating, convolutions with large strides modify values of a previous layer non-smoothly. Both layers create create checkerboard patterns in gradient magnitudes.
+			\item 
+				\begin{itemize} 
+					\item It makes sense to look not only on channels activations, but on spatial and on individual neurones ones, too.
+					\item Semantic dictionaries not always can be described in natural language.
+					\item Matrix factorization is an active research area tackling the problem of finding the way to divide the neurons to the meaningful groups.
+				\end{itemize}
+		\end{enumerate}
+	\item Answers to the question regarding the last paper:
+		\begin{enumerate}
+			\item Z-score normalization
+			\item Coarse elements of the image (e.g. pose, general hair style, face shape, and eyeglasses)
+			\item Middle elements of the image (e.g. facial features, hair style, eyes open/closed)
+			\item Fine elements of the image (color scheme and microstructure)
+			\item "Latent space $W$ does not have to sampling according to any fixed distribution; its sampling density is induced by the learned piecewise continuous mapping $f(z)$"
+		\end{enumerate}
+\end{enumerate}
+\end{document}

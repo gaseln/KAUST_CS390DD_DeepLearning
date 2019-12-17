@@ -1,0 +1,43 @@
+\documentclass{article}
+\usepackage{amssymb, amssymb, amsthm}
+
+\usepackage{graphicx}
+
+\title{Assignment 6 : Visualisation and high resolutional GANs}
+\author{Elnur Gasanov}
+\date{}
+
+\begin{document}
+\maketitle
+
+\section{Tasks}
+
+\begin{enumerate}
+	\item Read paper (https://arxiv.org/abs/1311.2901) "Visualizing and Understanding Convolutional Networks" by Zelier and Fergus. This paper is an introduction to network visualization.
+	\item Answer the following questions. \begin{enumerate} \item What are three algorithms/ideas for visualizing convolutional layers in neural networks? \item What are challenges in visualizing the convolutional layers? \end{enumerate}
+	\item Read paper (https://arxiv.org/abs/1710.10196) "Progressive Growing of GANs for Improved Quality, Stability, and Variation" by Karras et al. This paper is the first modern GAN producing high quality results.
+	\item Answer the following questions. \begin{enumerate} \item What normalization is used in the networks? \item What loss function is used to train the networks? \item What type of regularization is used to train the networks? \end{enumerate}
+\end{enumerate}	
+
+\section{Solutions}
+\begin{enumerate}
+	\item "Visualizing and Understanding Convolutional Networks" by Zelier and Fergus \begin{enumerate}
+		
+		\item When deconvolving a feature map back to the initial image, all operations (convolution, pooling and activation) are done in a reversed order, and instead of pooling an unpooling is performed (while unpooling the value is transferred only to a cell which contained the max valie), instead of convolution deconvolution with the same filters is performed, ReLU layer's behaviour is not modified. In a feature map only top $k$ ($k$ is equal to 9 in the paper) is preserved, all other values in the map are set to zero. 
+		\item
+			\begin{enumerate}
+				
+				\item What is equivalent "reverse" operation for other (non-ReLU) activations
+				\item What is equivalent "reverse" operation for other pooling layers (e.g., Avgpool)
+
+			\end{enumerate}
+	
+		\end{enumerate} 
+	\item "Progressive Growing of GANs for Improved Quality, Stability, and Variation" by Karras et al.
+		\begin{enumerate}
+			\item Equalized learning rate (weight change is normalized by the variance), pixel-wise feature vector normalization in generator (Krizhevsky's local response normalization applied to generator layers).
+			\item WGAN-GP, LSGAN losses
+			\item Regularization is already imposed in the loss function (\textit{gradient penalty} in WGAN-GP loss).
+		\end{enumerate}
+\end{enumerate}
+\end{document}

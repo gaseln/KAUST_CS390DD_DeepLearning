@@ -1,0 +1,35 @@
+\documentclass{article}
+\usepackage{amsthm, amsmath, amssymb}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{enumitem}
+\author{Elnur Gasanov}
+\date{}
+\title{Assignment 8 : PointNet and Variational Encoder}
+
+\begin{document}
+\maketitle
+
+\section{Task}
+\begin{enumerate}
+	\item Read the paper: \href{https://arxiv.org/abs/1612.00593}{PointNet: Deep Learning on Point Sets for 3D Classification and Segmentation}
+	\item Read one of the papers: 
+		\begin{itemize} \item \href{https://arxiv.org/abs/1606.05908}{"Tutorial on Variational Autoencoders"} \item \href{https://arxiv.org/abs/1312.6114}{"Auto-Encoding Variational Bayes"} (original VAE paper) \end{itemize}
+	\item Answer the following questions:
+		\begin{enumerate}
+			\item Describe the different loss terms of a variational autoencoder. What do these loss terms try to accomplish.
+			\item What type of problems can be tackled with the PointNet Architecture?
+			\item What is a symmetric function? Why do the authors propose to use these types of functions in the network?
+			\item What is the box "input transform" doing in Figure 2 in the PointNet paper?
+		\end{enumerate}
+\end{enumerate}
+
+\section{Solution}
+
+\begin{enumerate}[label=(\alph*)]
+	\item It consists of two loss terms. First one is $KL(\mu(X), \Sigma(X) || \mathcal{N}(0, 1))$ , it tries to make distribution of latent variable $z$ close to normal distribution from which in future one plans to sample new latent variables. Second loss term is $\|X - f(z)\|^2$ which actually tries to make a generated image close to existing one. 
+	\item PointNet can tackle classification, part segmentation and semantic segmentation problems.
+	\item "symmetric function takes $n$ vectors as input and outputs a new vector that is invariant to the input order"; the usage of symmetric functions is motivated with the fact that output of the network must be invariant to input permutation.
+	\item This part of the network takes raw input, applies multilayer perceptron and max pooling across all points and passes the data through two fully connected layers. Authors claim that this facilitates to aligning all input to a canonical space before feature extraction.
+\end{enumerate}
+\end{document}
